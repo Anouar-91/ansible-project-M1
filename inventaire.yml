@@ -1,0 +1,19 @@
+all:
+  hosts:
+    front:
+      ansible_host: 192.168.1.24
+      ansible_user: mrrobot
+      ansible_password: root
+      ansible_ssh_pass: root
+      ansible_sudo_pass: root
+      path_src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-client-devops 
+      path_dest: /home/mrrobot/Documents
+
+    back:
+      ansible_host: 192.168.1.181
+      ansible_user: mrrobot2
+      ansible_password: root
+      ansible_ssh_pass: root
+      ansible_sudo_pass: root
+      path_src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-server-devops 
+      path_dest: /home/mrrobot2/Documents

@@ -1,0 +1,12 @@
+- name: Front Container deploy
+  hosts: front
+  become: true
+  become_method: sudo
+  roles: 
+    - ROLE_FRONT
+- name: Back Container deploy
+  hosts: back
+  become: true
+  become_method: sudo
+  roles: 
+    - ROLE_BACK

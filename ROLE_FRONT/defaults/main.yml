@@ -1,0 +1,4 @@
+---
+# defaults file for ROLE_FRONT
+path_src:  /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-client-devops 
+path_dest: /home/mrrobot/Documents

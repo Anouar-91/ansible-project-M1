@@ -1,0 +1,4 @@
+---
+# defaults file for ROLE_BACK
+path_src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-server-devops 
+path_dest: /home/mrrobot2/Documents/

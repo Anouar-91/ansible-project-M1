@@ -1,0 +1,66 @@
+---
+# tasks file for ROLE_BACK
+#- name: Copier des fichiers vers les machines virtuelles
+#  copy:
+#    src: "{{ path_src }}"
+#    dest: "{{ path_dest }}"
+- name: Clone git repository to specific path
+  git:
+    repo: https://github.com/Anouar-91/mernshop-client-devops.git
+    dest: /home/mrrobot/Documents/mernshop-client-devops
+- name: Copier fichier .env
+  copy:
+    src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-client-devops/.env 
+    dest: /home/mrrobot/Documents/mernshop-client-devops/
+- name: install dependencies
+  apt:
+    name: "{{item}}"
+    state: present
+    update_cache: yes
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+- name: add GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: add docker repository to apt
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+- name: install docker
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose
+- name: check docker is active
+  service:
+    name: docker
+    state: started
+    enabled: yes
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+#- name: Stopper les conteneurs
+#  command: docker stop $(docker ps -aq)
+#- name: Supprimer conteneurs
+#  command: docker rm $(docker ps -aq)
+#- name: Supprimer image
+#  command: docker rmi app-client
+- name: Exécuter la commande docker build
+  command: docker build --no-cache -t app-client /home/mrrobot/Documents/mernshop-client-devops
+- name: Exécuter la commande docker-compose
+  command: docker-compose -f /home/mrrobot/Documents/mernshop-client-devops/docker-compose.yaml up
+  async: 10
+  poll: 0
+
+  
