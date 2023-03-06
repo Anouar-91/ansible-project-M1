@@ -40,7 +40,17 @@
     - docker-ce
     - docker-ce-cli
     - containerd.io
-    - docker-compose
+    #- docker-compose
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: "755"
+- name: Démarrer le service Docker
+  become: true
+  systemd:
+    name: docker
+    state: started
 - name: check docker is active
   service:
     name: docker
@@ -56,6 +66,8 @@
 #  command: docker rm $(docker ps -aq)
 #- name: Supprimer image
 #  command: docker rmi app-client
+- name: Remove golang-docker-credential-helpers
+  shell: sudo apt remove golang-docker-credential-helpers -y
 - name: Exécuter la commande docker build
   command: docker build --no-cache -t app-client /home/mrrobot/Documents/mernshop-client-devops
 - name: Exécuter la commande docker-compose

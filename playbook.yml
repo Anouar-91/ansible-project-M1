@@ -1,3 +1,17 @@
+- name: Create Local Environement
+  hosts: localhost
+  tasks:
+    - name: Install Vagrant
+      command: brew install hashicorp/tap/hashicorp-vagrant
+    - name: init vagrant
+      command: chdir=/Users/eliotalderson/Documents/devops/devops-project-last-version/ansible vagrant init
+    - name: Copy Vagrantfile
+      template:
+        src: /Users/eliotalderson/Documents/devops/devops-project-last-version/ansible/Vagrantfile.j2
+        dest: /Users/eliotalderson/Documents/devops/devops-project-last-version/ansible/Vagrantfile
+    - name: Go to the folder and create the 2 Vms
+      command: chdir=/Users/eliotalderson/Documents/devops/devops-project-last-version/ansible vagrant up
+
 - name: Front Container deploy
   hosts: front
   become: true
