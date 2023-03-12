@@ -10,7 +10,7 @@
     dest: /home/mrrobot/Documents/mernshop-client-devops
 - name: Copier fichier .env
   copy:
-    src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-client-devops/.env 
+    src: front/.env
     dest: /home/mrrobot/Documents/mernshop-client-devops/
 - name: install dependencies
   apt:

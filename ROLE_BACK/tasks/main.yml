@@ -6,7 +6,7 @@
 # tasks file for ROLE_BACK
 - name: Copier des fichiers vers les machines virtuelles
   copy:
-    src: /Users/eliotalderson/Documents/devops/devops-project-last-version/docker/mernshop-server-devops/.env 
+    src: back/.env
     dest: /home/mrrobot2/Documents/mernshop-server-devops/
 - name: install dependencies
   apt:
