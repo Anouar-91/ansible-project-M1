@@ -39,7 +39,10 @@ Le playbook va exécuter les tâches suivantes dans la VM front et dans la VM ba
 3. Installe et démarre les machines virtuelles (VMs) avec Vagrant
 4. Dans la VM il git clone le projet front/back
 5. Copie et colle les .env à la racine de l'application (back/front)
-6. Déployer les conteneurs front-end et back-end 
+6. Créer un cron qui va git pull le projet toutes 1 minute
+7. Installation de docker et docker-compose
+8. Créer les images à partir des dockerfile
+9. Lance le docker-compose qui créer les conteneurs et les volumes
 
 > Note: Vous pouvez suivre la progression du playbook dans le terminal.
 
