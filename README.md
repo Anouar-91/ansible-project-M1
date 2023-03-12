@@ -10,13 +10,12 @@ Voici comment exécuter le playbook Ansible "Create Local Environment" depuis un
 
 1. Ouvrez un terminal sur votre Mac.
 2. Assurez-vous que vous êtes dans le répertoire où se trouve le playbook Ansible. 
-2. Créer 2 dossiers : 1 dossier back et 1 dossier front
-4. Dans le dossier front, créer un fichier .env dans lequel vous allez inscrire les lignes suivantes : 
+3. Dans le dossier front, créer un fichier .env dans lequel vous allez inscrire les lignes suivantes : 
 ```sh
     REACT_APP_API_URL=http://192.168.50.5:3005/api/
     REACT_APP_API_URL_IMAGE=http://192.168.50.5:3005/
 ```
-5. Dans le dossier back, créer un fichier .env dans lequel vous allez inscrire les lignes suivantes : 
+4. Dans le dossier back, créer un fichier .env dans lequel vous allez inscrire les lignes suivantes : 
 ```sh
     NODE_ENV = production
     PORT = 3005
@@ -26,9 +25,9 @@ Voici comment exécuter le playbook Ansible "Create Local Environment" depuis un
     CLIENT_URL = "https://brilliant-licorice-c691cc.netlify.app"
 ```
 
-6. Rendez-vous dans le fichier main.yml qui se trouve dans ROLE_FRONT/tasks/main.yml et à la ligne 13 indiquer le chemin du .env du front
-7. Rendez-vous dans le fichier main.yml qui se trouve dans ROLE_BACK/tasks/main.yml et à la ligne 9 indiquer le chemin du .env du front
-8. Exécutez la commande suivante pour lancer le playbook Ansible :
+5. Rendez-vous dans le fichier main.yml qui se trouve dans ROLE_FRONT/tasks/main.yml et à la ligne 13 indiquer le chemin du .env du front
+6. Rendez-vous dans le fichier main.yml qui se trouve dans ROLE_BACK/tasks/main.yml et à la ligne 9 indiquer le chemin du .env du front
+7. Exécutez la commande suivante pour lancer le playbook Ansible :
 ```sh
 ansible-playbook -i inventaire.yml playbook.yml
 ```
