@@ -12,6 +12,23 @@
   copy:
     src: front/.env
     dest: /home/mrrobot/Documents/mernshop-client-devops/
+- name: Créer le script git-pull.sh
+  become: yes
+  become_user: vagrant
+  copy:
+    content: |
+      #!/bin/bash
+      cd /home/mrrobot/Documents/mernshop-client-devops/
+      sudo git pull
+    dest: /home/vagrant/git-pull.sh
+    mode: 'u+x,g+x,o+x'
+- name: Ajouter une tâche planifiée cron pour git pull
+  become: yes
+  become_user: vagrant
+  cron:
+    name: "Git pull toutes les minutes"
+    minute: "*/1"
+    job: "/home/vagrant/git-pull.sh"
 - name: install dependencies
   apt:
     name: "{{item}}"
